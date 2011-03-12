@@ -1,0 +1,62 @@
+<center>
+<h1>Shark's Cove NASCAR League - GFY!!!</h1>
+<table class="home_t">
+<tr><td class="lefty"><strong>Next Race</strong></td></tr>
+<% if Race.next_race.empty? %>
+	<tr><td>There is no upcoming race.</td></tr>
+<% else %>
+	<% Race.next_race.each do |race| %>
+		<tr class="ten">
+			<td class="lefty"><%= race.racedate %></td>
+			<td class="lefty"><%= link_to race.name, race %></td>
+			<td class="lefty"><%= link_to race.user.name, race.user %></td>
+		</tr>
+		</tr>
+	<% end %>
+<% end %>
+</table>
+<table class="home_t">
+<tr><td class="lefty"><strong>Recent Messages</strong></td></tr>
+<% if MessagePost.prev3.empty? %>
+	<tr><td>There are no recent messages.</td></tr>
+<% else %>
+	<% MessagePost.prev3.each do |post| %>
+		<tr class="ten">
+			<td class="middy"><%= gravatar_for post.user, :size => 30 %></td>
+			<td class="lefty"><%= link_to post.user.nickname, post.user %></td>
+			<td class="lefty"><%= link_to post.subject, post %></td>
+		</tr>
+	<% end %>
+<% end %>
+</table>
+<table class="home_t">
+<tr><td class="left"><strong>Recent Races</strong></td></tr>
+<% if Race.prev3.empty? %>
+	<tr><td>There are no recent races.</td></tr>
+<% else %>
+	<% Race.prev3.each do |race| %>
+		<tr class="ten">
+			<td class="lefty"><%= race.racedate %></td>
+			<td class="lefty"><%= link_to race.name, race %></td>
+			<td class="lefty">
+				<% if !race.winning_driver.nil? %>
+					<%= link_to race.winning_driver.name, race.winning_driver %>
+				<% else %>
+					???
+				<% end %>
+			</td>
+			<td class="winning_user">
+				<% if race.racedate > Date.today %>
+					???
+				<% else %>
+					<% if !race.winning_user.nil? %>
+						<%= link_to race.winning_user.nickname, race.winning_user %>
+					<% else %>
+						None
+					<% end %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+<% end %>
+</table>

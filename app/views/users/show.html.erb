@@ -1,0 +1,21 @@
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.nickname %>
+      </h1>
+			<br />
+			<%= render 'user_results' %>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @user.name %><br />
+      <strong>E-Mail</strong>  <%= @user.email %><br />
+      <strong>Wins</strong> <%= @user.race_wins.count %><br />
+			<% if current_user?(@user) %>
+				<%= link_to "Edit Profile", edit_user_path %><br />
+			<% end %>
+    </td>
+  </tr>
+</table>
+

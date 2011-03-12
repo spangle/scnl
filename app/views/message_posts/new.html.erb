@@ -1,0 +1,9 @@
+<h1>Create message</h1>
+
+<%= form_for(@message_post) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= render 'fields', :f => f %>
+  <div class="actions">
+    <%= f.submit "Post Message" %>
+  </div>  
+<% end %>

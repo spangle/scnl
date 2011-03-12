@@ -1,0 +1,22 @@
+<div class="field">
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :track %><br />
+  <%= f.text_field :track %>
+</div>
+<div class="field">
+  <%= f.label :location %><br />
+  <%= f.text_field :location %>
+</div>
+<div class="field">
+  <%= f.label :selector %><br />
+	<% User.all.each do |user| %>
+		<%= f.radio_button :selector_id, user.id %><%= user.name %><br />
+	<% end %>
+</div>
+<div class="field">
+  <%= f.label "Date" %><br />
+  <%= f.date_select :racedate %>
+</div>

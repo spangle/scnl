@@ -1,0 +1,61 @@
+<h5>Owner Results</h5>
+<% if !@race.race_relations.empty? %>
+	<table summary="User Race Results">
+		<tr class="twelve">
+			<td class="lefty">Owner</td>
+			<td class="lefty">Driver 1</td>
+			<td class="middy">Place</td>
+			<td class="lefty">Driver 2</td>
+			<td class="middy">Place</td>
+		</tr>
+	<% i = true %>
+	<% @race.race_relations.each do |relation| %>
+		<% driver = relation.driver %>
+		<% result = relation.race_result %>
+		<% if i %>
+			<tr class="ten">
+				<% owner = relation.user %>
+				<td class="lefty"><%= link_to "#{owner.name}", owner %></td>
+				<td class="lefty"><%= link_to "#{driver.name}", driver %></td>
+				<td class="middy"><%= "#{result.place}" unless result.nil? %></td>
+			<% i = false %>
+		<% else %>
+				<td class="lefty"><%= link_to "#{driver.name}", driver %></td>
+				<td class="middy"><%= "#{result.place}" unless result.nil? %></td>
+			</tr>
+			<% i = true %>
+		<% end %>
+	<% end %>
+
+	</table>
+<% else %>
+	<br />
+	Owners have not been entered yet...
+<% end %>
+<br />
+<br />
+<h5>Race Results</h5>
+<% if !@race.race_results.empty? %>
+	<table summary="User Race Results">
+		<tr class="twelve">
+			<td class="middy">Place</td>
+			<td class="lefty">Driver</td>
+			<td class="middy">Points</td>
+			<td class="lefty">Owner</td>
+		</tr>
+		<% @race.race_results.each do |result| %>
+			<% driver = result.driver %>
+			<% owner = result.race_relation.user unless result.race_relation.nil? %>
+			<tr class="ten">
+				<td class="middy"><%= result.place %></td>
+				<td class="lefty"><%= link_to "#{driver.name}", driver %></td>
+				<td class="middy"><%= result.points %></td>
+				<td class="lefty"><%= link_to "#{owner.name}", owner unless owner.nil? %></td>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+<% else %>
+	<br />
+	Results have not been entered yet...
+<% end %>

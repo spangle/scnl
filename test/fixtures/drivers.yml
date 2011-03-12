@@ -1,0 +1,21 @@
+# == Schema Information
+# Schema version: 20110303204836
+#
+# Table name: drivers
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  number     :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  number: MyString
+
+two:
+  name: MyString
+  number: MyString

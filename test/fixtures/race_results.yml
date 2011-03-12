@@ -1,0 +1,25 @@
+# == Schema Information
+# Schema version: 20110307235511
+#
+# Table name: race_results
+#
+#  id          :integer         not null, primary key
+#  match_id    :integer
+#  finisher_id :integer
+#  place       :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  points      :integer
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  match_id: 1
+  finisher_id: 1
+  place: 1
+
+two:
+  match_id: 1
+  finisher_id: 1
+  place: 1

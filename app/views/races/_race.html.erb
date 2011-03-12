@@ -1,0 +1,27 @@
+<tr class="ten">
+	<% selector = race.user %>
+	<% driver = race.winning_driver %>
+	<% user = race.winning_user %>
+	<td class="lefty"><%= race.racedate %></td>
+	<td class="lefty"><%= link_to race.name, race %></td>
+	<td class="lefty"><%= race.location %></td>
+	<td class="lefty"><%= link_to selector.name, selector %></td>
+	<td class="lefty">
+	<% if !driver.nil? %>
+		<%= link_to driver.name, driver %>
+	<% else %>
+		???
+	<% end %>
+	</td>
+	<td class="winning_user">
+	<% if race.racedate > Date.today %>
+		???
+	<% else %>
+		<% if !user.nil? %>
+			<%= link_to user.name, user %>
+		<% else %>
+			None
+		<% end %>
+	<% end %>
+	</td>
+</tr>

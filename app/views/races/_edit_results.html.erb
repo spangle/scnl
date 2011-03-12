@@ -1,0 +1,26 @@
+<%= f.label "Results" %><br />
+<% if @race.race_results.empty? %>
+		<%= link_to "Load Drivers", {:action => "init_results", :id => @race.id} %><br /><br />
+<% else %>
+	<table summary="Edit Race Results">
+	<thead>
+		<tr class="twelve">
+			<td class="lefty">Driver</td>
+			<td class="middy">Number</td>
+			<td class="lefty">Points</td>
+			<td class="middy">Action</td>
+		</tr>
+	</thead>
+	<tbody id="race-results-list" style="cursor: move">
+		<% @race.race_results.each do |result| %>
+			<tr class="ten" id="result_<%= result.id %>">
+				<td class="lefty"><%= result.driver.name %></td>
+				<td class="middy"><%= result.driver.number %></td>
+				<td class="lefty"><input id="race_result_<%= result.id %>_points" name="race_result[<%= result.id %>][points]" size="4" type="text" value=<%= result.points %> style="height:16px;margin:0px;padding:0px;"></td>
+				<td class="middy"><%= link_to "Delete", {:action => "remove_result", :id => @race.id, :result_id => result.id} %></td>
+			</tr>
+		<% end %>
+	</tbody>
+	</table>
+	<%= link_to "Delete all", {:action => "remove_all_results", :id => @race.id} %><br />
+<% end %>

@@ -1,0 +1,48 @@
+<table class="profile" summary="Race information">
+  <tr>
+    <td class="main">
+      <h1><%= "#{@race.name}" %></h1>
+      <strong><%= @race.racedate.strftime("%a %e, %Y") %></strong><br />
+			<strong><%= "#{@race.track}" %></strong><br />
+			<strong><%= "#{@race.location}" %></strong><br /><br />
+			<%= render 'race_results' %>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @race.name %><br />
+			<% selector = @race.user %>
+			<% driver = @race.winning_driver %>
+			<% user = @race.winning_user %>
+			<% if @race.isSelector?(current_user) %>
+	      <strong>Selector</strong> You
+				<% if @race.race_relations.empty? %>
+					 - <%= link_to "Select Drivers", {:action => "init_relations", :id => @race.id} %>
+				<% end %>
+				<br />
+			<% else %>
+	      <strong>Selector</strong> <%= link_to selector.name, selector %><br />
+			<% end %>
+			<strong>Winning Driver</strong> 
+			<% if !driver.nil? %>
+	      <%= link_to driver.name, driver %>
+			<% else %>
+				???
+			<% end %>
+			<br />
+			<strong>Winning User</strong> 
+			<% if @race.racedate > Date.today %>
+				???
+			<% else %>
+				<% if !user.nil? %>
+					<%= link_to user.name, user %>
+				<% else %>
+					None
+				<% end %>
+			<% end %>
+			<br />
+			<% if current_user.admin? %>
+				<%= link_to "Edit Race", edit_race_path %><br />
+			<% end %>
+    </td>
+  </tr>
+</table>
+

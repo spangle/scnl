@@ -1,0 +1,21 @@
+<h1>SCNL 2011 Season</h1>
+
+<%= will_paginate %>
+
+<table class="reg">
+	<tr class="twelve">
+		<td class="lefty">Date</td>
+		<td class="lefty">Name</td>
+		<td class="lefty">Location</td>
+		<td class="lefty">Selector</td>
+		<td class="lefty">Winning Driver</td>
+		<td class="lefty">Winning User</td>
+	</tr>
+	<%= render @races %>
+</table>
+
+<%= will_paginate %>
+
+<% if current_user.admin? %>
+	<%= link_to "Create New Race", new_race_path %>
+<% end %>

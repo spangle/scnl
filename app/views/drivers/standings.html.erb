@@ -1,0 +1,21 @@
+<h1>The Top 14</h1>
+These are your league leaders after <%= RaceResult.completed_races %> races:<br />
+<table summary="The Top 14">
+	<tr class="twelve">
+		<td class="lefty">Driver</td>
+		<td class="middy">Number</td>
+		<td class="middy">Wins</td>
+		<td class="middy">Top 10s</td>
+		<td class="middy">Points</td>
+	</tr>
+	<% @standings.each do |d_id, point_total| %>
+		<% driver = Driver.find(d_id) %>
+		<tr class="ten">
+			<td class="lefty"><%= link_to "#{driver.name}", driver %></td>
+			<td class="middy"><%= driver.number %></td>
+			<td class="middy"><%= driver.race_wins.count %></td>
+			<td class="middy"><%= driver.race_tops.count %></td>
+			<td class="middy"><%= point_total %></td>
+		</tr>
+	<% end %>
+</table>

@@ -1,0 +1,24 @@
+<table class="profile" summary="Driver information">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= "#{@driver.name} - #{@driver.number}" %>
+      </h1>
+			<% if @driver.race_results.count > 0 %>
+				<%= render 'driver_results' %>
+			<% else %>
+				<%= @driver.name %> hasn't raced yet this year.<br />
+			<% end %>
+    </td>
+    <td class="sidebar round">
+			<strong>Starts</strong> <%= @driver.race_results.count %><br />
+      <strong>Points</strong> <%= @driver.points %><br />
+      <strong>Wins</strong> <%= @driver.race_wins.count %><br />
+      <strong>Top 10s</strong> <%= @driver.race_tops.count %><br />
+			<% if current_user.admin? %>
+				<%= link_to "Edit Driver", edit_driver_path %>
+			<% end %>
+    </td>
+  </tr>
+</table>
+

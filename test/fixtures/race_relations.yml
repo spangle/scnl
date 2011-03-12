@@ -1,0 +1,24 @@
+# == Schema Information
+# Schema version: 20110303204836
+#
+# Table name: race_relations
+#
+#  id         :integer         not null, primary key
+#  event_id   :integer
+#  owner_id   :integer
+#  pilot_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  event_id: 1
+  owner_id: 1
+  pilot_id: 1
+
+two:
+  event_id: 1
+  owner_id: 1
+  pilot_id: 1

@@ -1,0 +1,26 @@
+<table summary="User Race Results">
+	<tr class="twelve">
+		<td class="lefty">Race</td>
+		<td class="lefty">Driver 1</td>
+		<td class="middy">Finish</td>
+		<td class="lefty">Driver 2</td>
+		<td class="middy">Finish</td>
+	</tr>
+	<% i = true %>
+	<% @user.race_relations.each do |relation| %>
+		<% driver = relation.driver %>
+		<% if i %>
+			<tr class="ten">
+				<% race = relation.race %>
+				<td class="lefty"><%= link_to "#{race.name}", race %></td>
+				<td class="lefty"><%= link_to "#{driver.name}", driver %></td>
+				<td class="middy"><%= "#{relation.race_result.place}" unless relation.race_result.nil? %></td>
+			<% i = false %>
+		<% else %>
+				<td class="lefty"><%= link_to "#{driver.name}", driver %></td>
+				<td class="middy"><%= "#{relation.race_result.place}" unless relation.race_result.nil? %></td>
+			</tr>
+			<% i = true %>
+		<% end %>
+	<% end %>
+</table>

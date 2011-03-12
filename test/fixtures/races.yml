@@ -1,0 +1,28 @@
+# == Schema Information
+# Schema version: 20110307224703
+#
+# Table name: races
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  location    :string(255)
+#  selector_id :integer
+#  racedate    :date
+#  created_at  :datetime
+#  updated_at  :datetime
+#  track       :string(255)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  location: MyString
+  selector_id: 1
+  racedate: 2011-03-03
+
+two:
+  name: MyString
+  location: MyString
+  selector_id: 1
+  racedate: 2011-03-03

@@ -1,0 +1,20 @@
+<h1>SCNL 2011 Messages</h1>
+
+<% if MessagePost.count > 0 %>
+	<%= will_paginate %>
+
+	<table>
+	<tr class="twelve">
+		<td class="middy"></td>
+		<td class="lefty">Name</td>
+		<td class="lefty">Subject</td>
+	</tr>
+		<%= render @message_posts %>
+	</table>
+
+	<%= will_paginate %>
+<% else %>
+	There are no messages to display.<br \><br \>
+<% end %>
+
+<%= link_to "Create New Message", new_message_post_path %>

@@ -1,0 +1,9 @@
+<h1>Create Race</h1>
+
+<%= form_for(@race) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= render 'fields', :f => f %>
+  <div class="actions">
+    <%= f.submit "Create Race" %>
+  </div>  
+<% end %>

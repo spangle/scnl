@@ -1,0 +1,22 @@
+<h1>SCNL 2011 Drivers</h1>
+
+<%= will_paginate %>
+
+<table summary="All Drivers">
+	<tr class="twelve">
+		<td class="lefty">Name</td>
+		<td class="middy">Number</td>
+		<td class="middy">Starts</td>
+		<td class="middy">Points</td>
+		<td class="middy">Wins</td>
+		<td class="middy">Top 10s</td>
+	</tr>
+	<%= render @drivers %>
+</table>
+
+<%= will_paginate %>
+
+<br />
+<% if current_user.admin? %>
+	<%= link_to "Create New Driver", new_driver_path %>
+<% end %>
